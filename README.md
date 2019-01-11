@@ -1,6 +1,6 @@
 ![My image](https://thodorisit.github.io/EasyLock/img/easyLock.png)
 # EasyLock
- A simple way to secure with password your website with just two lines of code.
+ A simple way to secure with password your webpage with just two lines of code.
 
 # Instructions
 
