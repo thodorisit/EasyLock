@@ -16,11 +16,6 @@
             $this->timeout = 7 * 24 * 60 * 60;
             $this->failLoginAttempts = -1;
             $this->templateDesign = array();
-            
-            // logedin $_SESSION["logedin"] = 1;
-            // pasword success $_SESSION["password"] = ;
-            // timeout $_SESSION["loginAttempts"] 
-            // when loged in $_SESSION["timeout"]
         }
         function lock() {
             if ( ( (isset($_SESSION["logedin"])) && (isset($_GET["logout"])) ) || ( !self::checkTimeout() ) ) {
