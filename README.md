@@ -8,7 +8,11 @@ Include class
 ```
 require "easylock.class.php";
 ```
-Call class and settings functions (features below). In the end of each call, call lock function.
+Call class and settings functions (features below). 
+```
+(new EasyLock)->setPasswords(array('password1','password2'))->setFailLoginLimit(10)
+```
+In the end of each call, call lock function.
 ```
 ->lock();
 ```
