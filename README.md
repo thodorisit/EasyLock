@@ -87,3 +87,5 @@ This class is capable of even preparing you a coffee.
 
 # Logout
 In order to logout, redirect to [youpage]?logout=1
+# IMPORTANT
+Keep in  mind, this class use session to store plain information such as password.
