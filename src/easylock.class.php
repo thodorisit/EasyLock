@@ -1,4 +1,11 @@
 <?php
+	/**
+	 * @package    EasyLock
+	 * @author     Thodoris Itsios <www.itsios.eu>
+	 * @copyright  (c) 2019 Thodoris Itsios
+	 * @license    MIT License
+	 * @link       https://github.com/thodorisit/EasyLock
+	 */
     class EasyLock {
         
         private $passwords;
@@ -21,12 +28,6 @@
             if ( ( (isset($_SESSION["logedin"])) && (isset($_GET["logout"])) ) || ( !self::checkTimeout() ) ) {
                 self::logout();
                 self::refreshPage();
-            }
-            if (self::checkIPbyPass()) {
-                if ( !isset($_SESSION["logedin"]) && $_SESSION["logedin"] != 1 ) {
-                    $_SESSION["logedin"] = 1;
-                    self::refreshPage();
-                }
             }
             if ( isset($_POST['easyLockSubmit']) ) {
                 $_SESSION["password"] = $_POST["easyLockPassword"];
@@ -55,10 +56,18 @@
             
             }
             
-            if ( !isset($_SESSION["logedin"]) ) {
-                echo self::loginTemplate1();
-                exit();
-            }
+            if (self::checkIPbyPass()) {
+                if ( !isset($_SESSION["logedin"]) && $_SESSION["logedin"] != 1 ) {
+                    $_SESSION["logedin"] = 1;
+                    self::refreshPage();
+                }
+            } else {
+				if ( !self::checkPassword() || !self::checkTimeout() || !self::checkIPban() ) {
+					self::logout();
+					echo self::loginTemplate1();
+					exit();
+				}
+			}
             
         }
         
